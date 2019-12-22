@@ -5,7 +5,7 @@ import HeaderComponent from "./HeaderComponent";
 
 configure({adapter: new Adapter()});
 
-describe('Shallow Render Footer Component',()=>{
+describe('Shallow Render Header Component',()=>{
     let wrapper: any;
 
     beforeEach(()=>{
