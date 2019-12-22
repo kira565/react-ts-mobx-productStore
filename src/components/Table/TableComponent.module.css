@@ -1,0 +1,31 @@
+.shop-wrapper__table {
+    background-color: white;
+    margin: 2%;
+    padding: 2%;
+    -webkit-box-shadow:0 0 10px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow:0 0 10px rgba(0, 0, 0, 0.5);
+    box-shadow:0 0 10px rgba(0, 0, 0, 0.5);
+}
+.grid__item:active, .grid__item:hover, .grid__item:focus {
+    outline: none;
+}
+.oddRow, .evenRow {
+    border-bottom: 1px solid #e0e0e0;
+    padding: 1%;
+}
+.table__header {
+    font-weight: bold;
+    font-size: 1.2em;
+    border-bottom: 1px solid lightskyblue;
+    padding-bottom: 2%;
+    margin-bottom: 1%;
+}
+.table__row {
+   border-bottom: 1px solid gray;
+}
+.colored-div {
+    height: 50%;
+    width: 19%;
+    margin-top: 3%;
+    border: 1px solid darkgray;
+}

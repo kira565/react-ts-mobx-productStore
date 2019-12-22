@@ -1,0 +1,47 @@
+.sider-container {
+    color: white;
+    padding-top: 20%;
+}
+
+.sider-header {
+    padding: 5%;
+    text-align: center;
+}
+
+.sider-header h2 {
+    color: white;
+}
+
+.sider-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    padding-left: 5%;
+}
+.select-type-title {
+    padding-bottom: 5px;
+}
+.sider-controls__select-type {
+    padding-bottom: 10px;
+}
+
+.sider-controls__select-color {
+    padding-bottom: 20px;
+}
+
+.sider-controls__select-size {
+    padding-bottom: 10px;
+}
+
+.sider-controls__select-instock {
+    padding-bottom: 10px;
+}
+
+.sider-controls__select-date_range {
+    padding-bottom: 10px;
+}
+
+.select-color-options {
+    margin: 5% 10% 5% 10%;
+    border: 1px solid darkgray;
+}

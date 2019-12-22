@@ -1,0 +1,8 @@
+.footer-wrapper {
+    text-align: center;
+    border-top: 1px solid lightgrey;
+
+}
+.footer__by {
+    opacity: 0.5;
+}
