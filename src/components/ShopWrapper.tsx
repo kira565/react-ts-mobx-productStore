@@ -12,11 +12,9 @@ const {Header, Footer, Sider, Content} = Layout;
 const styles = require('./ShowWrapper.module.css');
 
 
-interface IProps {
-}
 
 
-const ShopWrapper: React.FC<IProps> = observer(() => {
+const ShopWrapper: React.FC = observer(() => {
     const rootStore = useMst();
     let snapshot = getSnapshot(rootStore);
     onSnapshot(rootStore, (currSnapshot) => snapshot = currSnapshot);

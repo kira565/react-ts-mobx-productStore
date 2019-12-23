@@ -82,8 +82,5 @@ describe("All Filters works fine", () => {
             }
         )
     });
-
-
-
 });
 

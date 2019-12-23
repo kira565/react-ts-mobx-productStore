@@ -38,7 +38,7 @@ export function makeArrayFromEnum(enumObject: any): Array<any>{
 }
 
 export const formatDateToString = (date: any): string => {
-    return moment(date).format('MM/DD/YYYY')
+    return moment(date).toISOString()
 };
 
 export const selectFilter = ((productType: any, filter: string): boolean => filter === SHOW_ALL ? true : productType === filter);
