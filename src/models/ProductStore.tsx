@@ -25,7 +25,7 @@ export const ProductStore = types.model("ProductStore", { // Store. Содерж
         },
     }))
     .actions(self => ({ // ~~ actions (mutable but safe)
-        setFilter(filter: string, filterValue: string) {
+        setFilter(filter: string, filterValue: string): void {
             switch (filter) {
                 case (SHOW_TYPE):
                     self.typeFilter = filterValue;
@@ -37,10 +37,10 @@ export const ProductStore = types.model("ProductStore", { // Store. Содерж
                     self.colorFilter = filterValue;
             }
         },
-        setInStock(isInStock: boolean) {
+        setInStock(isInStock: boolean): void {
             self.inStockFilter = isInStock;
         },
-        setDateInterval(interval: any) {
+        setDateInterval(interval: any): void {
             self.dateFilter = interval
         }
     }));

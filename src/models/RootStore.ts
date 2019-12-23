@@ -19,7 +19,7 @@ const RootStoreContext = createContext<null | RootInstance>(null);
 
 export const Provider = RootStoreContext.Provider;
 
-export function useMst() {
+export function useMst(): any {
     const store = useContext(RootStoreContext);
     if (store === null) {
         throw new Error("Store === null, необходимо добавить context provider");

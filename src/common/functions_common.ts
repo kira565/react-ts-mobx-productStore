@@ -4,7 +4,7 @@ import {IProduct} from "../types/types";
 import {Colors, Sizes, Types} from "./enums_common";
 import * as faker from "faker";
 
-export function fillProducts(count: number) {
+export function fillProducts(count: number): Array<IProduct> {
     let products = [];
     for (let id: number = 1; id <= count; id++) {
         const product: IProduct = {
