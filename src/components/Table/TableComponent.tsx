@@ -9,7 +9,7 @@ interface IProps {
     rootStore?: any;
 }
 
-const TableComponent: React.FC<IProps> = props => {
+const TableComponent: React.FC<IProps> = ({rootStore}) => {
     const _rowClassName = ({index}: any): any => {
         if (index < 0) {
             return styles.headerRow;
@@ -26,9 +26,9 @@ const TableComponent: React.FC<IProps> = props => {
                         <Table width={width}
                                height={500}
                                rowHeight={70}
-                               rowCount={props.rootStore.productsStore.filteredProducts.length}
+                               rowCount={rootStore.productsStore.filteredProducts.length}
                                headerHeight={80}
-                               rowGetter={({index}) => props.rootStore.productsStore.filteredProducts[index]}
+                               rowGetter={({index}) => rootStore.productsStore.filteredProducts[index]}
                                rowStyle={{display: 'flex', flexDirection: 'row', textAlign: 'center'}}
                                headerClassName={styles['table__header']}
                                gridClassName={styles['grid__item']}

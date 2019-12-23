@@ -16,27 +16,27 @@ interface IProps {
 }
 
 
-const SiderComponent: React.FC<IProps> = (props) => {
+const SiderComponent: React.FC<IProps> = ({rootStore}) => {
 
 
     const onChangeType = (type: string): void => {
-        props.rootStore.productsStore.setFilter(SHOW_TYPE, type)
+        rootStore.productsStore.setFilter(SHOW_TYPE, type)
     };
     const onChangeColor = (color: string): void => {
-        props.rootStore.productsStore.setFilter(SHOW_COLOR, color)
+        rootStore.productsStore.setFilter(SHOW_COLOR, color)
     };
     const onChangeSize = (size: string): void => {
-        props.rootStore.productsStore.setFilter(SHOW_SIZE, size)
+        rootStore.productsStore.setFilter(SHOW_SIZE, size)
     };
     const onChangeInStock = (event: any): void => {
-        props.rootStore.productsStore.setInStock(event.target.checked);
+        rootStore.productsStore.setInStock(event.target.checked);
     };
     const onChangeDateRange = (range: Array<any>): void => {
         let dateRanges: Array<string> = [];
         range.map(momentI => {
             dateRanges.push(formatDateToString(momentI));
         });
-        props.rootStore.productsStore.setDateInterval(dateRanges)
+        rootStore.productsStore.setDateInterval(dateRanges)
     };
 
 
