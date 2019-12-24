@@ -2,7 +2,8 @@ import React from 'react';
 import {Select, Avatar, Checkbox, DatePicker} from "antd";
 import {Colors, Sizes, Types} from "../../common/enums_common";
 import {formatDateToString, makeArrayFromEnum} from "../../common/functions_common"
-import {SHOW_COLOR, SHOW_SIZE, SHOW_TYPE,} from "../../common/constants_common"
+import {DATE_RECEIPT, SHOW_COLOR, SHOW_INSTOCK, SHOW_SIZE, SHOW_TYPE,} from "../../common/constants_common"
+import {TRootStore} from "../../types/types";
 
 
 const styles = require('./SiderComponent.module.css');
@@ -12,7 +13,7 @@ const {RangePicker} = DatePicker;
 
 
 interface IProps {
-    rootStore: any;
+    rootStore: TRootStore;
 }
 
 
@@ -20,23 +21,23 @@ const SiderComponent: React.FC<IProps> = ({rootStore}) => {
 
 
     const onChangeType = (type: string): void => {
-        rootStore.productsStore.setFilter(SHOW_TYPE, type)
+        rootStore.productsStore.filterStore.changeFilter(SHOW_TYPE, type)
     };
     const onChangeColor = (color: string): void => {
-        rootStore.productsStore.setFilter(SHOW_COLOR, color)
+        rootStore.productsStore.filterStore.changeFilter(SHOW_COLOR, color)
     };
     const onChangeSize = (size: string): void => {
-        rootStore.productsStore.setFilter(SHOW_SIZE, size)
+        rootStore.productsStore.filterStore.changeFilter(SHOW_SIZE, size)
     };
     const onChangeInStock = (event: any): void => {
-        rootStore.productsStore.setInStock(event.target.checked);
+        rootStore.productsStore.filterStore.changeFilter(SHOW_INSTOCK, event.target.checked);
     };
     const onChangeDateRange = (range: Array<any>): void => {
         let dateRanges: Array<string> = [];
         range.map(momentI => {
             dateRanges.push(formatDateToString(momentI));
         });
-        rootStore.productsStore.setDateInterval(dateRanges)
+        rootStore.productsStore.filterStore.changeFilter(DATE_RECEIPT, dateRanges)
     };
 
 

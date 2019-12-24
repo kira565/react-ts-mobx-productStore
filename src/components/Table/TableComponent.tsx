@@ -10,6 +10,7 @@ interface IProps {
 }
 
 const TableComponent: React.FC<IProps> = ({rootStore}) => {
+
     const _rowClassName = ({index}: any): any => {
         if (index < 0) {
             return styles.headerRow;
@@ -26,9 +27,9 @@ const TableComponent: React.FC<IProps> = ({rootStore}) => {
                         <Table width={width}
                                height={500}
                                rowHeight={70}
-                               rowCount={rootStore.productsStore.filteredProducts.length}
+                               rowCount={rootStore.productsStore.takeFilteredProducts.length}
                                headerHeight={80}
-                               rowGetter={({index}) => rootStore.productsStore.filteredProducts[index]}
+                               rowGetter={({index}) => rootStore.productsStore.takeFilteredProducts[index]}
                                rowStyle={{display: 'flex', flexDirection: 'row', textAlign: 'center'}}
                                headerClassName={styles['table__header']}
                                gridClassName={styles['grid__item']}
@@ -43,7 +44,7 @@ const TableComponent: React.FC<IProps> = ({rootStore}) => {
                                     dataKey={'color'}
                                     width={200}
                                     flexGrow={0.5}
-                                    maxWidth={2500}
+                                    maxWidth={1500}
                                     cellRenderer={({dataKey, rowData}) =>
                                         <div className={styles['colored-div']}
                                              style={{backgroundColor: rowData[dataKey]}}/>}/>
@@ -52,7 +53,7 @@ const TableComponent: React.FC<IProps> = ({rootStore}) => {
                                     dataKey={'inStock'}
                                     width={250}
                                     flexGrow={0.5}
-                                    maxWidth={2500}
+                                    maxWidth={1500}
                                     cellRenderer={({dataKey, rowData}) =>
                                         rowData[dataKey] ? 'Да' : 'Нет'}
                             />
@@ -60,7 +61,7 @@ const TableComponent: React.FC<IProps> = ({rootStore}) => {
                                     dataKey={'dateReceipt'}
                                     width={300}
                                     flexGrow={1}
-                                    maxWidth={5000}
+                                    maxWidth={1500}
                                     cellRenderer={({dataKey, rowData}) =>
                                         moment(rowData[dataKey]).format('YYYY-DD-MM')}/>
                         </Table>
