@@ -1,15 +1,20 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {Column, Table, AutoSizer} from 'react-virtualized';
 
 const styles = require('./TableComponent.module.css');
 import moment from 'moment'
+import {onSnapshot} from "mobx-state-tree";
+import {observer} from "mobx-react";
 
 
 interface IProps {
-    rootStore?: any;
+    productsStore?: any;
 }
 
-const TableComponent: React.FC<IProps> = ({rootStore}) => {
+const TableComponent: React.FC<IProps> = observer(({productsStore}) => {
+    let [filteredProd, setFilteredProd] = useState(productsStore.takeFilteredProducts);
+    onSnapshot(productsStore, (snapshot) => setFilteredProd(productsStore.takeFilteredProducts));
+
 
     const _rowClassName = ({index}: any): any => {
         if (index < 0) {
@@ -27,9 +32,9 @@ const TableComponent: React.FC<IProps> = ({rootStore}) => {
                         <Table width={width}
                                height={500}
                                rowHeight={70}
-                               rowCount={rootStore.productsStore.takeFilteredProducts.length}
+                               rowCount={filteredProd.length}
                                headerHeight={80}
-                               rowGetter={({index}) => rootStore.productsStore.takeFilteredProducts[index]}
+                               rowGetter={({index}) => filteredProd[index]}
                                rowStyle={{display: 'flex', flexDirection: 'row', textAlign: 'center'}}
                                headerClassName={styles['table__header']}
                                gridClassName={styles['grid__item']}
@@ -70,6 +75,6 @@ const TableComponent: React.FC<IProps> = ({rootStore}) => {
             </AutoSizer>
         </div>
     );
-};
+});
 
 export default TableComponent

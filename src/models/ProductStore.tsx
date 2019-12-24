@@ -19,6 +19,7 @@ export const ProductStore = types.model("ProductStore", { // Store. Содерж
 })
     .views(self => ({ // ~~redux selectors
         get takeFilteredProducts(): any {
+            console.log('takeFilteredProducts');
             return self.products.filter(product => self.filterStore.getFilters(product))
 
             // filter (product => filterProducts(self.filterStore.getFilters) +++++ [{"SHOW_COLOR", "SHOW_ALL"}, {SHOW_INSTOCK, true}...]

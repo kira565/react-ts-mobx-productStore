@@ -1,4 +1,4 @@
-import {cast, types} from "mobx-state-tree";
+import {types} from "mobx-state-tree";
 import {Filter} from "./Filter";
 import {TFTypes, TFValues, TProduct} from "../types/types";
 import {DATE_RECEIPT, SHOW_ALL, SHOW_COLOR, SHOW_INSTOCK, SHOW_SIZE, SHOW_TYPE} from "../common/constants_common";
@@ -9,6 +9,7 @@ export const FilterStore = types.model("FilterStore", {
 })
     .views(self => ({
         getFilters(product: TProduct): boolean {
+            console.log('getFilters')
             let typePassed: boolean = true;
             let sizePassed: boolean = true;
             let colorPassed: boolean = true;
@@ -23,11 +24,12 @@ export const FilterStore = types.model("FilterStore", {
                     } else typePassed = self.filters[i].getValue === product.type;
                 }
 
-                if (self.filters[i].getValue === SHOW_SIZE){
+                if (self.filters[i].type === SHOW_SIZE){
                     if (self.filters[i].getValue === SHOW_ALL) {
                         sizePassed = true
                     } else sizePassed = self.filters[i].getValue === product.size;
                 }
+
                 if (self.filters[i].type === SHOW_COLOR){
                     if (self.filters[i].getValue === SHOW_ALL) {
                         colorPassed = true

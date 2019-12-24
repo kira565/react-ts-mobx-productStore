@@ -16,8 +16,7 @@ const styles = require('./ShowWrapper.module.css');
 
 const ShopWrapper: React.FC = observer(() => {
     const rootStore = useMst();
-    let snapshot = getSnapshot(rootStore);
-    onSnapshot(rootStore, (currSnapshot) => snapshot = currSnapshot);
+
 
     return (
         <div className={styles['shop-wrapper']}>
@@ -27,7 +26,7 @@ const ShopWrapper: React.FC = observer(() => {
                         <HeaderComponent/>
                     </Header>
                     <Content className={styles['shop-wrapper__content']}>
-                        <TableComponent rootStore={rootStore}/>
+                        <TableComponent productsStore={rootStore.productsStore}/>
                     </Content>
                     <Footer className={styles['shop-wrapper__footer']}>
                         <FooterComponent/>
