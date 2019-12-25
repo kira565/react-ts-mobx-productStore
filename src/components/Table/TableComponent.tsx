@@ -1,22 +1,24 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import {Column, Table, AutoSizer} from 'react-virtualized';
-
-const styles = require('./TableComponent.module.css');
 import moment from 'moment'
 import {onSnapshot} from "mobx-state-tree";
 import {observer} from "mobx-react";
 
+import {TProductStore} from "../../types/types";
+
+
+const styles = require('./TableComponent.module.css');
 
 interface IProps {
-    productsStore?: any;
+    productsStore: TProductStore;
 }
 
 const TableComponent: React.FC<IProps> = observer(({productsStore}) => {
     let [filteredProd, setFilteredProd] = useState(productsStore.takeFilteredProducts);
-    onSnapshot(productsStore, (snapshot) => setFilteredProd(productsStore.takeFilteredProducts));
+    onSnapshot(productsStore, () => setFilteredProd(productsStore.takeFilteredProducts));
 
 
-    const _rowClassName = ({index}: any): any => {
+    const _rowClassName = ({index}: any): string => {
         if (index < 0) {
             return styles.headerRow;
         } else {

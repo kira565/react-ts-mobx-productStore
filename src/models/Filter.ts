@@ -1,5 +1,6 @@
-import {Instance, types} from "mobx-state-tree";
+import {types} from "mobx-state-tree";
 import {DATE_RECEIPT, SHOW_ALL, SHOW_COLOR, SHOW_INSTOCK, SHOW_SIZE, SHOW_TYPE} from "../common/constants_common";
+import {TFValues} from "../types/types";
 
 
 export const FTypes = types.union(
@@ -16,17 +17,17 @@ export const FValues = types.union(
 );
 
 export const Filter = types.model("Filter", {
-    id: types.identifierNumber, // Может не пригодиться, надо протестить
+    id: types.identifierNumber,
     type: types.union(FTypes),
     value: types.optional(types.union(FValues), SHOW_ALL)
 })
     .views(self => ({
-        get getValue(): any {
+        get getValue(): TFValues {
             return self.value
         }
     }))
     .actions(self => ({
-        setValue(value: any): void{
+        setValue(value: TFValues): void {
             self.value = value
         }
     }));

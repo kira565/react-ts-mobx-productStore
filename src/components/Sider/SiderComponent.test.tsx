@@ -6,16 +6,16 @@ import {fillProducts} from "../../common/functions_common";
 import {RootStore} from "../../models/RootStore";
 import SiderComponent from "./SiderComponent";
 import {Select, Checkbox, DatePicker} from "antd";
+import {TRootStore} from "../../types/types";
 const {RangePicker} = DatePicker;
-/*
 
 configure({adapter: new Adapter()});
 
 describe('Should render smart Sider component with incoming props', function () {
-    let renderedComponent: any, rootStore:any;
+    let renderedComponent: any, rootStore: TRootStore;
 
     beforeEach(() => {
-        rootStore = RootStore.create({productsStore: {products: fillProducts(1000), filterStore: []}});
+        rootStore = RootStore.create({productsStore: {products: fillProducts(1000), filterStore: {}}});
         renderedComponent = mount(<SiderComponent rootStore={rootStore}/>)
     });
 
@@ -26,4 +26,3 @@ describe('Should render smart Sider component with incoming props', function () 
     });
 
 });
-*/

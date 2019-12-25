@@ -6,16 +6,17 @@ import TableComponent from "./TableComponent";
 import {fillProducts} from "../../common/functions_common";
 import {RootStore} from "../../models/RootStore";
 import {Table} from "react-virtualized";
-/*
+import {TRootStore} from "../../types/types";
+
 
 configure({adapter: new Adapter()});
 
 describe('Should render Table with values after receiving props', function () {
-    let renderedComponent: any, rootStore:any;
+    let renderedComponent: any, rootStore: TRootStore;
 
     beforeEach(() => {
-        rootStore = RootStore.create({productsStore: {products: fillProducts(1000), filterStore: []}});
-        renderedComponent = mount(<TableComponent rootStore={rootStore}/>)
+        rootStore = RootStore.create({productsStore: {products: fillProducts(1000), filterStore: {}}});
+        renderedComponent = mount(<TableComponent productsStore={rootStore.productsStore}/>)
     });
 
     it('+ Smart Table component rendered', () => {
@@ -23,7 +24,7 @@ describe('Should render Table with values after receiving props', function () {
     });
 
     it('++ Smart Table component rendered with checking incoming props', () => {
-        expect(renderedComponent.find(Table).prop('rowCount')).toEqual(rootStore.productsStore.filteredProducts.length);
+        expect(renderedComponent.find(Table).prop('rowCount')).toEqual(rootStore.productsStore.takeFilteredProducts.length);
     });
 });
-*/
+

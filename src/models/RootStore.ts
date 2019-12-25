@@ -1,9 +1,10 @@
 import {ProductStore} from "./ProductStore";
 import {useContext, createContext} from "react";
-import {types, Instance, onSnapshot} from "mobx-state-tree";
+import {types, Instance} from "mobx-state-tree";
 import {fillProducts} from "../common/functions_common"
 import {connectReduxDevtools} from "mst-middlewares";
 import {DATE_RECEIPT, SHOW_COLOR, SHOW_INSTOCK, SHOW_SIZE, SHOW_TYPE} from "../common/constants_common";
+
 
 
 export const RootStore = types.model({
@@ -43,14 +44,13 @@ export const rootStore = RootStore.create({
 });
 connectReduxDevtools(require("remotedev"), rootStore);
 
-onSnapshot(rootStore, (currSnapshot) => console.log(currSnapshot));
 
 export type RootInstance = Instance<typeof RootStore>
 const RootStoreContext = createContext<null | RootInstance>(null);
 
 export const Provider = RootStoreContext.Provider;
 
-export function useMst(): any {
+export function useMst(): RootInstance {
     const store = useContext(RootStoreContext);
     if (store === null) {
         throw new Error("Store === null, необходимо добавить context provider");

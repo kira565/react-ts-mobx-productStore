@@ -4,6 +4,7 @@ import {Colors, Sizes, Types} from "../../common/enums_common";
 import {formatDateToString, makeArrayFromEnum} from "../../common/functions_common"
 import {DATE_RECEIPT, SHOW_COLOR, SHOW_INSTOCK, SHOW_SIZE, SHOW_TYPE,} from "../../common/constants_common"
 import {TRootStore} from "../../types/types";
+import {CheckboxChangeEvent} from "antd/es/checkbox";
 
 
 const styles = require('./SiderComponent.module.css');
@@ -29,10 +30,10 @@ const SiderComponent: React.FC<IProps> = ({rootStore}) => {
     const onChangeSize = (size: string): void => {
         rootStore.productsStore.filterStore.changeFilter(SHOW_SIZE, size)
     };
-    const onChangeInStock = (event: any): void => {
+    const onChangeInStock = (event: CheckboxChangeEvent): void => {
         rootStore.productsStore.filterStore.changeFilter(SHOW_INSTOCK, event.target.checked);
     };
-    const onChangeDateRange = (range: Array<any>): void => {
+    const onChangeDateRange = (range: Array<any>): void => { //Честно, так и не понял какой тип он хочет в параметрах увидеть
         let dateRanges: Array<string> = [];
         range.map(momentI => {
             dateRanges.push(formatDateToString(momentI));

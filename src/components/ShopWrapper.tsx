@@ -3,7 +3,6 @@ import {Layout} from "antd";
 import TableComponent from "./Table/TableComponent";
 import {observer} from "mobx-react";
 import {useMst} from "../models/RootStore";
-import {getSnapshot, onSnapshot} from "mobx-state-tree";
 import HeaderComponent from "./Header/HeaderComponent";
 import FooterComponent from "./Footer/FooterComponent";
 import SiderComponent from "./Sider/SiderComponent";
@@ -16,7 +15,6 @@ const styles = require('./ShowWrapper.module.css');
 
 const ShopWrapper: React.FC = observer(() => {
     const rootStore = useMst();
-
 
     return (
         <div className={styles['shop-wrapper']}>
