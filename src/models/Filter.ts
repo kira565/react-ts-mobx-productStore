@@ -25,15 +25,15 @@ export const Filter = types.model("Filter", {
         getValue(product: TProduct): boolean {
             switch (self.type) {
                 case SHOW_TYPE:
-                    return product.type === self.value;
+                    return self.value === SHOW_ALL? true : product.type === self.value;
                 case SHOW_COLOR:
-                    return product.color === self.value;
+                    return self.value === SHOW_ALL? true : product.color === self.value;
                 case SHOW_SIZE:
-                    return product.size === self.value;
+                    return self.value === SHOW_ALL? true : product.size === self.value;
                 case SHOW_INSTOCK:
-                    return product.inStock === self.value;
+                    return self.value === false? true : product.inStock === self.value;
                 case DATE_RECEIPT:
-                    return new Date(product.dateReceipt) >= new Date(self.value[0])
+                    return self.value.length < 2 ? true : new Date(product.dateReceipt) >= new Date(self.value[0])
                         && new Date(product.dateReceipt) <= new Date(self.value[1]);
                 default: return true
             }
