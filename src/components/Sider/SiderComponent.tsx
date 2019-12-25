@@ -3,7 +3,7 @@ import {Select, Avatar, Checkbox, DatePicker} from "antd";
 import {Colors, Sizes, Types} from "../../common/enums_common";
 import {formatDateToString, makeArrayFromEnum} from "../../common/functions_common"
 import {DATE_RECEIPT, SHOW_COLOR, SHOW_INSTOCK, SHOW_SIZE, SHOW_TYPE,} from "../../common/constants_common"
-import {TRootStore} from "../../types/types";
+import {TFilterStore} from "../../types/types";
 import {CheckboxChangeEvent} from "antd/es/checkbox";
 
 
@@ -14,31 +14,31 @@ const {RangePicker} = DatePicker;
 
 
 interface IProps {
-    rootStore: TRootStore;
+    filterStore: TFilterStore;
 }
 
 
-const SiderComponent: React.FC<IProps> = ({rootStore}) => {
-
+const SiderComponent: React.FC<IProps> = ({filterStore}) => {
+    console.log(filterStore.filters);
 
     const onChangeType = (type: string): void => {
-        rootStore.productsStore.filterStore.changeFilter(SHOW_TYPE, type)
+        filterStore.changeFilter(SHOW_TYPE, type)
     };
     const onChangeColor = (color: string): void => {
-        rootStore.productsStore.filterStore.changeFilter(SHOW_COLOR, color)
+        filterStore.changeFilter(SHOW_COLOR, color)
     };
     const onChangeSize = (size: string): void => {
-        rootStore.productsStore.filterStore.changeFilter(SHOW_SIZE, size)
+        filterStore.changeFilter(SHOW_SIZE, size)
     };
     const onChangeInStock = (event: CheckboxChangeEvent): void => {
-        rootStore.productsStore.filterStore.changeFilter(SHOW_INSTOCK, event.target.checked);
+        filterStore.changeFilter(SHOW_INSTOCK, event.target.checked);
     };
     const onChangeDateRange = (range: Array<any>): void => { //Честно, так и не понял какой тип он хочет в параметрах увидеть
         let dateRanges: Array<string> = [];
         range.map(momentI => {
             dateRanges.push(formatDateToString(momentI));
         });
-        rootStore.productsStore.filterStore.changeFilter(DATE_RECEIPT, dateRanges)
+        filterStore.changeFilter(DATE_RECEIPT, dateRanges)
     };
 
 
@@ -49,7 +49,8 @@ const SiderComponent: React.FC<IProps> = ({rootStore}) => {
                 <div className={styles['sider-controls__select-type']}>
                     <div className={styles['select-type-title']}>Тип товара:</div>
                     <Select placeholder="Выбрать тип..." style={{width: '90%'}} onChange={onChangeType}
-                            allowClear={true}>
+                            allowClear={true}
+                    >
                         {
                             makeArrayFromEnum(Types).map((item) => (
                                 <Option key={item} value={item}>
@@ -62,7 +63,8 @@ const SiderComponent: React.FC<IProps> = ({rootStore}) => {
                 <div className={styles['sider-controls__select-color']}>
                     <div className={styles['select-type-title']}>Цвет:</div>
                     <Select placeholder={'Цвет'} style={{width: '45%'}} size={"large"} onChange={onChangeColor}
-                            allowClear={true}>
+                            allowClear={true}
+                    >
                         {
                             makeArrayFromEnum(Colors).map((item) => (<Option key={item}>
                                     <Avatar style={{background: item, border: '1px solid gray'}} shape={"square"}/>

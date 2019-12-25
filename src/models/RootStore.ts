@@ -3,7 +3,7 @@ import {useContext, createContext} from "react";
 import {types, Instance} from "mobx-state-tree";
 import {fillProducts} from "../common/functions_common"
 import {connectReduxDevtools} from "mst-middlewares";
-import {DATE_RECEIPT, SHOW_COLOR, SHOW_INSTOCK, SHOW_SIZE, SHOW_TYPE} from "../common/constants_common";
+import {DATE_RECEIPT, SHOW_ALL, SHOW_COLOR, SHOW_INSTOCK, SHOW_SIZE, SHOW_TYPE} from "../common/constants_common";
 
 
 
@@ -18,15 +18,18 @@ export const rootStore = RootStore.create({
             filters: [
                 {
                     id: 1,
-                    type: SHOW_TYPE
+                    type: SHOW_TYPE,
+
                 },
                 {
                     id: 2,
-                    type: SHOW_SIZE
+                    type: SHOW_SIZE,
+
                 },
                 {
                     id: 3,
-                    type: SHOW_COLOR
+                    type: SHOW_COLOR,
+
                 },
                 {
                     id: 4,

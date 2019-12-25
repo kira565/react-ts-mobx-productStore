@@ -31,7 +31,7 @@ const ShopWrapper: React.FC = observer(() => {
                     </Footer>
                 </Layout>
                 <Sider width={300} className={styles['shop-wrapper__sider']}>
-                    <SiderComponent rootStore={rootStore}/>
+                    <SiderComponent filterStore={rootStore.productsStore.filterStore}/>
                 </Sider>
             </Layout>
         </div>
