@@ -15,23 +15,23 @@ export const rootStore = RootStore.create({
         products: fillProducts(1000), filterStore: {
             filters: [
                 {
-                    id: 1,
+                    id: "1",
                     type: SHOW_TYPE,
                 },
                 {
-                    id: 2,
+                    id: "2",
                     type: SHOW_SIZE
                 },
                 {
-                    id: 3,
+                    id: "3",
                     type: SHOW_COLOR
                 },
                 {
-                    id: 4,
+                    id: "4",
                     type: SHOW_INSTOCK
                 },
                 {
-                    id: 5,
+                    id: "5",
                     type: DATE_RECEIPT
                 },
                 ],

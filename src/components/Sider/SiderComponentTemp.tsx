@@ -6,6 +6,7 @@ import {DATE_RECEIPT, SHOW_COLOR, SHOW_INSTOCK, SHOW_SIZE, SHOW_TYPE,} from "../
 import {TFilterStore} from "../../types/types";
 import {CheckboxChangeEvent} from "antd/es/checkbox";
 
+/*
 
 const styles = require('./SiderComponent.module.css');
 
@@ -21,7 +22,7 @@ interface IProps {
 const SiderComponent: React.FC<IProps> = ({filterStore}) => {
     console.log(filterStore.takeFilters);
 
-    const onChangeType = (type: string): void => {
+ /!*   const onChangeType = (type: string): void => {
         filterStore.changeFilter(SHOW_TYPE, type)
     };
     const onChangeColor = (color: string): void => {
@@ -41,7 +42,7 @@ const SiderComponent: React.FC<IProps> = ({filterStore}) => {
         filterStore.changeFilter(DATE_RECEIPT, dateRanges)
     };
 
-
+*!/
     return (
         <div className={styles['sider-container']}>
             <div className={styles['sider-header']}><h2>Опции:</h2></div>
@@ -105,4 +106,4 @@ const SiderComponent: React.FC<IProps> = ({filterStore}) => {
     );
 };
 
-export default SiderComponent;
+export default SiderComponent;*/

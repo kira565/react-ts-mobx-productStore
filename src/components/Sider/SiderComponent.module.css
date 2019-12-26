@@ -18,6 +18,9 @@
     align-items: left;
     padding-left: 5%;
 }
+.sider-controls div {
+    width: 100%;
+}
 .select-type-title {
     padding-bottom: 5px;
 }
