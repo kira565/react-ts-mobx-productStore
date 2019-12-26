@@ -6,42 +6,36 @@ import {connectReduxDevtools} from "mst-middlewares";
 import {DATE_RECEIPT, SHOW_ALL, SHOW_COLOR, SHOW_INSTOCK, SHOW_SIZE, SHOW_TYPE} from "../common/constants_common";
 
 
-
 export const RootStore = types.model({
     productsStore: ProductStore
 });
 
 export const rootStore = RootStore.create({
     productsStore: {
-        products: fillProducts(1000),
-        filterStore: {
+        products: fillProducts(1000), filterStore: {
             filters: [
                 {
                     id: 1,
                     type: SHOW_TYPE,
-
                 },
                 {
                     id: 2,
-                    type: SHOW_SIZE,
-
+                    type: SHOW_SIZE
                 },
                 {
                     id: 3,
-                    type: SHOW_COLOR,
-
+                    type: SHOW_COLOR
                 },
                 {
                     id: 4,
-                    type: SHOW_INSTOCK,
-                    value: false
+                    type: SHOW_INSTOCK
                 },
                 {
                     id: 5,
-                    type: DATE_RECEIPT,
-                    value: []
-                }
-            ]
+                    type: DATE_RECEIPT
+                },
+                ],
+            selected: "TypeFilter"
         }
     }
 });

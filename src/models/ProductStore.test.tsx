@@ -7,6 +7,7 @@ import {Colors, Sizes, Types} from "../common/enums_common";
 import {TProduct} from "../types/types";
 
 
+/*
 it("Product store was filled with 1000 random values", done => {
     const store = ProductStore.create(    {products: fillProducts(1000), filterStore: {}});
     when(
@@ -140,4 +141,5 @@ describe("All Filters works fine", () => {
         )
     });
 });
+*/
 
