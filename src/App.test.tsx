@@ -3,8 +3,7 @@ import App from "./App"
 import {Provider, RootStore} from "./models/RootStore"
 import renderer from "react-test-renderer"
 import {fillProducts} from "./common/functions_common";
-import {DATE_RECEIPT, SHOW_COLOR, SHOW_INSTOCK, SHOW_SIZE, SHOW_TYPE} from "./common/constants_common";
-/*
+
 
 it("matches snapshot after+before loading", done => {
     const store = RootStore.create({productsStore: {products: fillProducts(1000), filterStore: {}}});
@@ -23,4 +22,3 @@ it("matches snapshot after+before loading", done => {
 });
 
 
-*/

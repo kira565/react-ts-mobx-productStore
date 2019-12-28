@@ -1,13 +1,14 @@
 import React from "react"
 import {mount} from "enzyme"
-/*
 import Adapter from 'enzyme-adapter-react-16'
 import {configure} from 'enzyme';
-import {fillProducts} from "../../common/functions_common";
+import {fillProducts, makeArrayFromEnum} from "../../common/functions_common";
 import {RootStore} from "../../models/RootStore";
 import SiderComponent from "./SiderComponent";
 import {Select, Checkbox, DatePicker} from "antd";
 import {TRootStore} from "../../types/types";
+import {DATE_RECEIPT, SHOW_COLOR, SHOW_INSTOCK, SHOW_SIZE, SHOW_TYPE} from "../../common/constants_common";
+import {Colors, Sizes, Types} from "../../common/enums_common";
 const {RangePicker} = DatePicker;
 
 
@@ -18,7 +19,38 @@ describe('Should render smart Sider component with incoming props', function () 
     let renderedComponent: any, rootStore: TRootStore;
 
     beforeEach(() => {
-        rootStore = RootStore.create({productsStore: {products: fillProducts(1000), filterStore: {}}});
+       rootStore = RootStore.create({
+            productsStore: {
+                products: fillProducts(1000), filterStore: {
+                    filters: [
+                        {
+                            id: "f1",
+                            type: SHOW_TYPE,
+                            options: makeArrayFromEnum(Types)
+                        },
+                        {
+                            id: "f2",
+                            type: SHOW_SIZE,
+                            options: makeArrayFromEnum(Sizes)
+                        },
+                        {
+                            id: "f3",
+                            type: SHOW_COLOR,
+                            options: makeArrayFromEnum(Colors)
+                        },
+                        {
+                            id: "f4",
+                            type: SHOW_INSTOCK
+                        },
+                        {
+                            id: "f5",
+                            type: DATE_RECEIPT
+                        },
+                    ],
+                    selected: null
+                }
+            }
+        });
         renderedComponent = mount(<SiderComponent filterStore={rootStore.productsStore.filterStore}/>)
     });
 
@@ -30,4 +62,4 @@ describe('Should render smart Sider component with incoming props', function () 
 
 });
 
-*/
+

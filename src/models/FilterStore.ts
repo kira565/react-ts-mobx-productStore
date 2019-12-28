@@ -8,8 +8,8 @@ import {values} from "mobx";
 
 export const FilterStore = types.model("FilterStore", {
     filters: types.array(Filters),
-    activeFilters: types.optional(types.map(types.reference(Filters)), {}), // ACTIVE
-    selected: types.maybeNull(types.reference(Filters))  /*types.maybeNull(types.reference(Filters))*/
+    activeFilters: types.optional(types.map(types.reference(Filters)), {}),
+    selected: types.maybeNull(types.reference(Filters))
 })
     .views(self => ({
         getFilters(product: TProduct): boolean {
