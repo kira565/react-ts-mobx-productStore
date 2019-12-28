@@ -1,9 +1,10 @@
 import {ProductStore} from "./ProductStore";
 import {useContext, createContext} from "react";
 import {types, Instance} from "mobx-state-tree";
-import {fillProducts} from "../common/functions_common"
+import {fillProducts, makeArrayFromEnum} from "../common/functions_common"
 import {connectReduxDevtools} from "mst-middlewares";
-import {DATE_RECEIPT, SHOW_ALL, SHOW_COLOR, SHOW_INSTOCK, SHOW_SIZE, SHOW_TYPE} from "../common/constants_common";
+import {DATE_RECEIPT, SHOW_COLOR, SHOW_INSTOCK, SHOW_SIZE, SHOW_TYPE} from "../common/constants_common";
+import {Colors, Sizes, Types} from "../common/enums_common";
 
 
 export const RootStore = types.model({
@@ -15,27 +16,30 @@ export const rootStore = RootStore.create({
         products: fillProducts(1000), filterStore: {
             filters: [
                 {
-                    id: "1",
+                    id: "f1",
                     type: SHOW_TYPE,
+                    options: makeArrayFromEnum(Types)
                 },
                 {
-                    id: "2",
-                    type: SHOW_SIZE
+                    id: "f2",
+                    type: SHOW_SIZE,
+                    options: makeArrayFromEnum(Sizes)
                 },
                 {
-                    id: "3",
-                    type: SHOW_COLOR
+                    id: "f3",
+                    type: SHOW_COLOR,
+                    options: makeArrayFromEnum(Colors)
                 },
                 {
-                    id: "4",
+                    id: "f4",
                     type: SHOW_INSTOCK
                 },
                 {
-                    id: "5",
+                    id: "f5",
                     type: DATE_RECEIPT
                 },
                 ],
-            selected: "TypeFilter"
+            selected: null
         }
     }
 });

@@ -1,26 +1,37 @@
-import {Instance, types} from "mobx-state-tree";
-import {Filters, TypeFilter} from "./Filter";
-import {TFilter, TFTypes, TFValues, TProduct} from "../types/types";
+import {types} from "mobx-state-tree";
+import {Filters} from "./Filters/Filter";
+import {TProduct} from "../types/types";
+import {TFValues} from "./Filters/FValues";
+import {values} from "mobx";
+
+
 
 export const FilterStore = types.model("FilterStore", {
     filters: types.array(Filters),
-    selected: types.reference(Filters)
+    activeFilters: types.optional(types.map(types.reference(Filters)), {}), // ACTIVE
+    selected: types.maybeNull(types.reference(Filters))  /*types.maybeNull(types.reference(Filters))*/
 })
     .views(self => ({
-        /*getFilters(product: TProduct): boolean {
-            return self.filters.every(filter => filter.getValue(product));
-        }*/
-        applyFilters() {
-
+        getFilters(product: TProduct): boolean {
+            return values(self.activeFilters).every((value) => {
+                return (value as any).getFilter(product)
+            });
         },
-        get takeFilters(){
+        get takeFilters() {
             return self.filters
         },
     }))
     .actions(self => ({
-        changeFilter(filterType: any, incomingValue: TFValues) {
-            self.filters.map(filter => filter.type === filterType && filter.setValue(incomingValue));
-            self.selected = filterType;
-            console.log((self.selected as Instance<typeof TypeFilter>).type)
+        changeFilter(filterType: string, incomingValue: TFValues, filterId: string) {
+            console.log(incomingValue);
+            self.selected = filterId as any;
+            self.selected && self.selected.setValue(incomingValue);
+
+            if (incomingValue === undefined || incomingValue === false) {
+                self.activeFilters.delete(filterId)
+            }
+            else {
+                self.activeFilters.set(filterId, self.selected as any)
+            }
         }
     }));

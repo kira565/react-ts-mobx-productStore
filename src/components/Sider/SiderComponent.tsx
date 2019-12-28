@@ -1,13 +1,9 @@
 import React from 'react';
 import {Select, Avatar, Checkbox, DatePicker} from "antd";
-import {Colors, Sizes, Types} from "../../common/enums_common";
-import {formatDateToString, makeArrayFromEnum} from "../../common/functions_common"
+import {formatDateToString} from "../../common/functions_common"
 import {DATE_RECEIPT, SHOW_COLOR, SHOW_INSTOCK, SHOW_SIZE, SHOW_TYPE,} from "../../common/constants_common"
 import {TFilterStore} from "../../types/types";
 import {CheckboxChangeEvent} from "antd/es/checkbox";
-import {Instance} from "mobx-state-tree";
-import {Filters} from "../../models/Filter";
-import {filter} from "minimatch";
 
 
 const styles = require('./SiderComponent.module.css');
@@ -28,74 +24,56 @@ const SiderComponent: React.FC<IProps> = ({filterStore}) => {
             <div className={styles['sider-header']}><h2>Опции:</h2></div>
             <div className={styles['sider-controls']}>
                 {
-                    filterStore.takeFilters.map((el) => {
-                        switch (el.type) {
-                            case (SHOW_TYPE):
-                                return (
-                                    <div  key={el.type}>
-                                        <div>{el.type}</div>
-                                        <Select onChange={(type: string) => {filterStore.changeFilter(el.type, type)}}
-                                                allowClear={true}
-                                        >
-                                            {
-                                                makeArrayFromEnum(Types).map(item => <Option key={item} value={item}>
-                                                    <div>{item}</div>
-                                                </Option>)
-                                            }
-                                        </Select>
-                                    </div>
-                                );
-                            case (SHOW_COLOR):
-                                return (
-                                    <div  key={el.type}>
-                                        <div>{el.type}</div>
-                                        <Select size={"large"} onChange={(color: string) => {filterStore.changeFilter(el.type, color)}}
-                                                allowClear={true}>
-                                            {
-                                                makeArrayFromEnum(Colors).map(item =>
-                                                    <Option key={item} value={item}>
-                                                        <Avatar style={{background: item, border: '1px solid gray'}}
+                    filterStore.takeFilters.map((filter) => {
+                        if (filter.type === SHOW_TYPE || filter.type === SHOW_SIZE || filter.type === SHOW_COLOR) {
+                            return (
+                                <div key={filter.id}>
+                                    <div>{filter.type}</div>
+                                    <Select allowClear={true}
+                                            size={filter.type === SHOW_COLOR ? "large" : "default"}
+                                            onChange={(value: string) => {
+                                                filterStore.changeFilter(filter.type, value, filter.id)
+                                            }}
+                                    >
+                                        {
+                                            filter.options.map((option: any) =>
+                                                <Option key={option} value={option}>
+                                                    {
+                                                        filter.type === SHOW_COLOR
+                                                            ? <Avatar
+                                                                style={{background: option, border: '1px solid gray'}}
                                                                 shape={"square"}/>
-                                                    </Option>)
-                                            }
-                                        </Select>
-                                    </div>
-                                );
-                            case (SHOW_SIZE):
-                                return (
-                                    <div  key={el.type}>
-                                        <div>{el.type}</div>
-                                        <Select onChange={(size: string) => {filterStore.changeFilter(el.type, size)}} allowClear={true}>
-                                            {
-                                                makeArrayFromEnum(Sizes).map(item => <Option key={item} value={item}>
-                                                    <div>{item}</div>
+                                                            : <div>{option}</div>
+                                                    }
                                                 </Option>)
-                                            }
-                                        </Select>
-                                    </div>
-                                );
-                            case (SHOW_INSTOCK):
-                                return (
-                                    <div  key={el.type}>
-                                        <div>{el.type}</div>
-                                        <Checkbox onChange={(e: CheckboxChangeEvent) => {filterStore.changeFilter(el.type, e.target.checked)}}
-                                                  style={{color: 'white'}}>{el.value}</Checkbox>
-                                    </div>
-                                );
-                            case (DATE_RECEIPT):
-                                return (
-                                    <div  key={el.type}>
-                                        <div>{el.type}</div>
-                                        <RangePicker style={{width: '90%'}}
-                                                     onChange={(range: Array<any>): void => {
-                                                         let dateRanges: Array<string> = [];
-                                                         range.map(momentI => {
-                                                             dateRanges.push(formatDateToString(momentI));
-                                                         });
-                                                         filterStore.changeFilter(el.type, dateRanges)
-                                                     }} format={"YYYY-DD-MM"}/>
-                                    </div>
-                                );
+                                        }
+                                    </Select>
+                                </div>
+                            )
+                        }
+                        if (filter.type === SHOW_INSTOCK) {
+                            return (
+                                <div key={filter.id}>
+                                    <Checkbox style={{color: "white"}}
+                                              onChange={(e: CheckboxChangeEvent) => {
+                                                  filterStore.changeFilter(filter.type, e.target.checked, filter.id)
+                                              }}>{filter.type}</Checkbox>
+                                </div>
+                            )
+                        }
+                        if (filter.type === DATE_RECEIPT) {
+                            return (
+                                <div key={filter.id}>
+                                    <RangePicker style={{width: '90%'}}
+                                                 onChange={(range: Array<any>): void => {
+                                                     let dateRanges: Array<string> = [];
+                                                     range.map(momentI => {
+                                                         dateRanges.push(formatDateToString(momentI));
+                                                     });
+                                                     filterStore.changeFilter(filter.type, dateRanges.length === 2 ? dateRanges : undefined, filter.id)
+                                                 }} format={"YYYY-DD-MM"}/>
+                                </div>
+                            )
                         }
 
                     })

@@ -11,6 +11,6 @@ export const ProductStore = types.model("ProductStore", {
 })
     .views(self => ({ // ~~redux selectors
         get takeFilteredProducts(): Array<TProduct> {
-            return self.products.filter((product: TProduct) => true/*self.filterStore.getFilters(product)*/)
+            return self.products.filter((product: TProduct) => self.filterStore.getFilters(product))
         }
     }));
