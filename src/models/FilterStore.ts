@@ -1,10 +1,7 @@
 import {types} from "mobx-state-tree";
-import {Filters} from "./Filters/Filter";
+import {Filters, TFilterType} from "./Filters/Filter";
 import {TProduct} from "../types/types";
 import {TFValues} from "./Filters/FValues";
-import {values} from "mobx";
-
-
 
 export const FilterStore = types.model("FilterStore", {
     filters: types.array(Filters),
@@ -13,17 +10,16 @@ export const FilterStore = types.model("FilterStore", {
 })
     .views(self => ({
         getFilters(product: TProduct): boolean {
-            return values(self.activeFilters).every((value) => {
-                return (value as any).getFilter(product)
+            return Array.from(self.activeFilters).every((value) => {
+                return value[1].getFilter(product)
             });
         },
         get takeFilters() {
             return self.filters
-        },
+        }
     }))
     .actions(self => ({
         changeFilter(filterType: string, incomingValue: TFValues, filterId: string) {
-            console.log(incomingValue);
             self.selected = filterId as any;
             self.selected && self.selected.setValue(incomingValue);
 
@@ -31,7 +27,7 @@ export const FilterStore = types.model("FilterStore", {
                 self.activeFilters.delete(filterId)
             }
             else {
-                self.activeFilters.set(filterId, self.selected as any)
+                self.activeFilters.set(filterId, self.selected as TFilterType)
             }
         }
     }));

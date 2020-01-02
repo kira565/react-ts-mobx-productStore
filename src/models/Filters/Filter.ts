@@ -29,9 +29,7 @@ export const Filters = types.union(
                 case DATE_RECEIPT: {
                     return DateReceipt
                 }
-                default: {
-                    return "none"
-                }
+                default: throw new Error()
             }
         }
     }, TypeFilter, SizeFilter, ColorFilter, InStockFilter, DateReceipt);

@@ -19,28 +19,12 @@
     padding-left: 5%;
 }
 .sider-controls div {
-    width: 100%;
+    width: 97%;
 }
 .select-type-title {
     padding-bottom: 5px;
 }
 .sider-controls__select-type {
-    padding-bottom: 10px;
-}
-
-.sider-controls__select-color {
-    padding-bottom: 20px;
-}
-
-.sider-controls__select-size {
-    padding-bottom: 10px;
-}
-
-.sider-controls__select-instock {
-    padding-bottom: 10px;
-}
-
-.sider-controls__select-date_range {
     padding-bottom: 10px;
 }
 

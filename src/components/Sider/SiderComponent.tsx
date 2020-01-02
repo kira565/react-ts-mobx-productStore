@@ -1,6 +1,5 @@
 import React from 'react';
 import {Select, Avatar, Checkbox, DatePicker} from "antd";
-import {formatDateToString} from "../../common/functions_common"
 import {DATE_RECEIPT, SHOW_COLOR, SHOW_INSTOCK, SHOW_SIZE, SHOW_TYPE,} from "../../common/constants_common"
 import {TFilterStore} from "../../types/types";
 import {CheckboxChangeEvent} from "antd/es/checkbox";
@@ -27,8 +26,12 @@ const SiderComponent: React.FC<IProps> = ({filterStore}) => {
                     filterStore.takeFilters.map((filter) => {
                         if (filter.type === SHOW_TYPE || filter.type === SHOW_SIZE || filter.type === SHOW_COLOR) {
                             return (
-                                <div key={filter.id}>
-                                    <div>{filter.type}</div>
+                                <div key={filter.id} className={styles['sider-controls__select-type']}>
+                                    <div className={styles['select-type-title']}>
+                                        {
+                                            filter.type === SHOW_TYPE && 'Тип' || filter.type === SHOW_SIZE && 'Размер' || filter.type === SHOW_COLOR && 'Цвет'
+                                        }
+                                    </div>
                                     <Select allowClear={true}
                                             size={filter.type === SHOW_COLOR ? "large" : "default"}
                                             onChange={(value: string) => {
@@ -53,24 +56,20 @@ const SiderComponent: React.FC<IProps> = ({filterStore}) => {
                         }
                         if (filter.type === SHOW_INSTOCK) {
                             return (
-                                <div key={filter.id}>
+                                <div key={filter.id} className={styles['sider-controls__select-type']}>
                                     <Checkbox style={{color: "white"}}
                                               onChange={(e: CheckboxChangeEvent) => {
                                                   filterStore.changeFilter(filter.type, e.target.checked, filter.id)
-                                              }}>{filter.type}</Checkbox>
+                                              }}>{filter.type === SHOW_INSTOCK && 'В наличии'}</Checkbox>
                                 </div>
                             )
                         }
                         if (filter.type === DATE_RECEIPT) {
                             return (
-                                <div key={filter.id}>
+                                <div key={filter.id} className={styles['sider-controls__select-type']}>
                                     <RangePicker style={{width: '90%'}}
                                                  onChange={(range: Array<any>): void => {
-                                                     let dateRanges: Array<string> = [];
-                                                     range.map(momentI => {
-                                                         dateRanges.push(formatDateToString(momentI));
-                                                     });
-                                                     filterStore.changeFilter(filter.type, dateRanges.length === 2 ? dateRanges : undefined, filter.id)
+                                                     filterStore.changeFilter(filter.type, range.length === 2 ? range : undefined, filter.id)
                                                  }} format={"YYYY-DD-MM"}/>
                                 </div>
                             )
