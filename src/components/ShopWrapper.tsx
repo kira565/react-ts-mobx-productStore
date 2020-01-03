@@ -11,8 +11,6 @@ const {Header, Footer, Sider, Content} = Layout;
 const styles = require('./ShowWrapper.module.css');
 
 
-
-
 const ShopWrapper: React.FC = observer(() => {
     const rootStore = useMst();
 
@@ -24,14 +22,14 @@ const ShopWrapper: React.FC = observer(() => {
                         <HeaderComponent/>
                     </Header>
                     <Content className={styles['shop-wrapper__content']}>
-                        <TableComponent productsStore={rootStore.productsStore}/>
+                        <TableComponent rootStore={rootStore}/>
                     </Content>
                     <Footer className={styles['shop-wrapper__footer']}>
                         <FooterComponent/>
                     </Footer>
                 </Layout>
                 <Sider width={300} className={styles['shop-wrapper__sider']}>
-                    <SiderComponent filterStore={rootStore.productsStore.filterStore}/>
+                    <SiderComponent filterStore={rootStore.filterStore}/>
                 </Sider>
             </Layout>
         </div>

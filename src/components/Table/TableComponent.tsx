@@ -4,18 +4,18 @@ import moment from 'moment'
 import {onSnapshot} from "mobx-state-tree";
 import {observer} from "mobx-react";
 
-import {TProductStore} from "../../types/types";
+import {TRootStore} from "../../types/types";
 
 
 const styles = require('./TableComponent.module.css');
 
 interface IProps {
-    productsStore: TProductStore;
+    rootStore: TRootStore;
 }
 
-const TableComponent: React.FC<IProps> = observer(({productsStore}) => {
-    let [filteredProd, setFilteredProd] = useState(productsStore.takeFilteredProducts);
-    onSnapshot(productsStore, () => setFilteredProd(productsStore.takeFilteredProducts));
+const TableComponent: React.FC<IProps> = observer(({rootStore}) => {
+    let [filteredProd, setFilteredProd] = useState(rootStore.takeFilteredProducts);
+    onSnapshot(rootStore, () => setFilteredProd(rootStore.takeFilteredProducts));
 
 
     const _rowClassName = ({index}: any): string => {

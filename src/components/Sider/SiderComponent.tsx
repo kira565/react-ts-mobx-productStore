@@ -6,7 +6,6 @@ import {CheckboxChangeEvent} from "antd/es/checkbox";
 
 
 const styles = require('./SiderComponent.module.css');
-
 const {Option} = Select;
 const {RangePicker} = DatePicker;
 
