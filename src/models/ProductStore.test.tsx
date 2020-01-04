@@ -50,7 +50,7 @@ it("All filters should be disabled or with 'show_all' value", done => {
                     type: DATE_RECEIPT
                 },
             ],
-            selected: null
+           // selected: null
         }
     });
     when(
@@ -97,12 +97,12 @@ describe("All Filters works fine", () => {
                     type: DATE_RECEIPT
                 },
             ],
-            selected: null
+           // selected: null
         }
     });
 
     it("ProductStore filters data by Size", done => {
-        store.filterStore.changeFilter(SHOW_TYPE, Types.Underwear, "f1");
+        store.filterStore.changeFilter(Types.Underwear, "f1");
         when(
             (): boolean => store.filterStore.filters[0].value === Types.Underwear,
             (): void => {
@@ -112,7 +112,7 @@ describe("All Filters works fine", () => {
         )
     });
     it("ProductStore filters data by Type", done => {
-        store.filterStore.changeFilter(SHOW_SIZE, Sizes.XL, "f2");
+        store.filterStore.changeFilter(Sizes.XL, "f2");
         when(
             (): boolean => store.filterStore.filters[1].value === Sizes.XL,
             (): void => {
@@ -122,7 +122,7 @@ describe("All Filters works fine", () => {
         )
     });
     it("ProductStore filters data by Color", done => {
-        store.filterStore.changeFilter(SHOW_COLOR, Colors.RED, "f3");
+        store.filterStore.changeFilter(Colors.RED, "f3");
         when(
             (): boolean => store.filterStore.filters[2].value === Colors.RED,
             (): void => {
@@ -132,7 +132,7 @@ describe("All Filters works fine", () => {
         )
     });
     it("ProductStore filters data by inStock", done => {
-        store.filterStore.changeFilter(SHOW_INSTOCK, true, "f4");
+        store.filterStore.changeFilter(true, "f4");
         when(
             (): boolean => store.filterStore.filters[3].value === true,
             (): void => {
@@ -142,7 +142,7 @@ describe("All Filters works fine", () => {
         )
     });
     it("ProductStore filters data by date interval", done => {
-        store.filterStore.changeFilter(DATE_RECEIPT, ["12/19/2019", "02/23/2020"], "f5");
+        store.filterStore.changeFilter(["12/19/2019", "02/23/2020"], "f5");
         when(
             (): boolean => store.filterStore.filters[4].value.length > 0,
             (): void => {

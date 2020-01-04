@@ -50,7 +50,7 @@ describe('Should render smart Sider component with incoming props', function () 
                         type: DATE_RECEIPT
                     },
                 ],
-                selected: null
+                //selected: null
             }
         });
         renderedComponent = mount(<SiderComponent filterStore={rootStore.filterStore}/>)

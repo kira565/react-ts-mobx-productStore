@@ -34,7 +34,7 @@ const SiderComponent: React.FC<IProps> = ({filterStore}) => {
                                     <Select allowClear={true}
                                             size={filter.type === SHOW_COLOR ? "large" : "default"}
                                             onChange={(value: string) => {
-                                                filterStore.changeFilter(filter.type, value, filter.id)
+                                                filterStore.changeFilter(value, filter.id)
                                             }}
                                     >
                                         {
@@ -58,7 +58,7 @@ const SiderComponent: React.FC<IProps> = ({filterStore}) => {
                                 <div key={filter.id} className={styles['sider-controls__select-type']}>
                                     <Checkbox style={{color: "white"}}
                                               onChange={(e: CheckboxChangeEvent) => {
-                                                  filterStore.changeFilter(filter.type, e.target.checked, filter.id)
+                                                  filterStore.changeFilter(e.target.checked, filter.id)
                                               }}>{filter.type === SHOW_INSTOCK && 'В наличии'}</Checkbox>
                                 </div>
                             )
@@ -68,7 +68,7 @@ const SiderComponent: React.FC<IProps> = ({filterStore}) => {
                                 <div key={filter.id} className={styles['sider-controls__select-type']}>
                                     <RangePicker style={{width: '90%'}}
                                                  onChange={(range: Array<any>): void => {
-                                                     filterStore.changeFilter(filter.type, range.length === 2 ? range : undefined, filter.id)
+                                                     filterStore.changeFilter(range.length === 2 ? range : undefined, filter.id)
                                                  }} format={"YYYY-DD-MM"}/>
                                 </div>
                             )

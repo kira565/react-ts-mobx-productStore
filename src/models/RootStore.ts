@@ -51,7 +51,7 @@ export const rootStore = RootStore.create({
                 type: DATE_RECEIPT
             },
         ],
-        selected: null
+        //selected: null
     }
 });
 connectReduxDevtools(require("remotedev"), rootStore);
