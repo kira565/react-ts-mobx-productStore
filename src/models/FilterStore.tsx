@@ -28,7 +28,7 @@ export const FilterStore = types.model("FilterStore", {
             let filt = self.getFiltersById(filterId)[0];
             filt.setValue(incomingValue);
 
-            if (incomingValue === undefined || incomingValue === false) {
+            if (incomingValue === undefined || incomingValue === 0) {
                 self.activeFilters.delete(filterId)
             }
             else {

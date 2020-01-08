@@ -2,7 +2,6 @@ import moment from 'moment'
 import {Enum, TProduct} from "../types/types";
 import {Colors, Sizes, Types} from "./enums_common";
 import * as faker from "faker";
-import {SHOW_COLOR, SHOW_SIZE, SHOW_TYPE} from "./constants_common";
 
 export function fillProducts(count: number): Array<TProduct> {
     let products = [];
@@ -13,7 +12,7 @@ export function fillProducts(count: number): Array<TProduct> {
             type: randomEnum(Types),
             color: randomEnum(Colors),
             size: randomEnum(Sizes),
-            inStock: Math.floor(Math.random() * 2) === 0,
+            inStock: Math.round(Math.random()),
             dateReceipt: formatDateToString(faker.date.future())
         };
         products.push(product)

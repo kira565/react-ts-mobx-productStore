@@ -1,5 +1,6 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const nodeExternals = require('webpack-node-externals');
 
 module.exports = {
     entry: './src/index.tsx',
@@ -64,10 +65,10 @@ module.exports = {
     ],
     devtool: "source-map",
     resolve: {
-        extensions: ['.js', '.ts', '.tsx'],
+        extensions: ['.js', '.tsx'],
         modules: [
             path.resolve('./node_modules'),
-            path.resolve('./src')
         ]
-    }
+    },
+
 };

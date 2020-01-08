@@ -58,7 +58,7 @@ const SiderComponent: React.FC<IProps> = ({filterStore}) => {
                                 <div key={filter.id} className={styles['sider-controls__select-type']}>
                                     <Checkbox style={{color: "white"}}
                                               onChange={(e: CheckboxChangeEvent) => {
-                                                  filterStore.changeFilter(e.target.checked, filter.id)
+                                                  filterStore.changeFilter(e.target.checked ? 1 : 0, filter.id)
                                               }}>{filter.type === SHOW_INSTOCK && 'В наличии'}</Checkbox>
                                 </div>
                             )

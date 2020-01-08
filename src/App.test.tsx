@@ -4,6 +4,7 @@ import {Provider, RootStore} from "./models/RootStore"
 import renderer from "react-test-renderer"
 import {fillProducts} from "./common/functions_common";
 
+/*
 
 it("matches snapshot after+before loading", done => {
     const store = RootStore.create({productsStore: {products: fillProducts(1000)}, filterStore: {}});
@@ -22,3 +23,4 @@ it("matches snapshot after+before loading", done => {
 });
 
 
+*/

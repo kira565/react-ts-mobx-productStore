@@ -1,10 +1,11 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {Column, Table, AutoSizer} from 'react-virtualized';
 import moment from 'moment'
 import {onSnapshot} from "mobx-state-tree";
 import {observer} from "mobx-react";
 
-import {TRootStore} from "../../types/types";
+import {TProduct, TRootStore} from "../../types/types";
+import {fillProducts} from "../../common/functions_common";
 
 
 const styles = require('./TableComponent.module.css');
@@ -16,6 +17,15 @@ interface IProps {
 const TableComponent: React.FC<IProps> = observer(({rootStore}) => {
     let [filteredProd, setFilteredProd] = useState(rootStore.takeFilteredProducts);
     onSnapshot(rootStore, () => setFilteredProd(rootStore.takeFilteredProducts));
+
+    useEffect(() => {
+        if (rootStore.statePost === "pending"){
+            rootStore.postProducts(fillProducts(1000))
+        }
+        if (rootStore.statePost === "done"){
+            rootStore.getProducts();
+        }
+    }, [rootStore.statePost]);
 
 
     const _rowClassName = ({index}: any): string => {

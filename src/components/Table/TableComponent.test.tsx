@@ -8,6 +8,7 @@ import {RootStore} from "../../models/RootStore";
 import {Table} from "react-virtualized";
 import {TRootStore} from "../../types/types";
 
+/*
 
 configure({adapter: new Adapter()});
 
@@ -30,3 +31,4 @@ describe('Should render Table with values after receiving props', function () {
 });
 
 
+*/

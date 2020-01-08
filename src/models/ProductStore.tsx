@@ -11,4 +11,11 @@ export const ProductStore = types.model("ProductStore", {
         get productsArray(): Array<TProduct> {
             return self.products
         }
-    }));
+    }))
+    .actions(self => ({
+        setProductsArray(products: any){
+            console.log(products);
+            self.products = products;
+        }
+    }))
+;

@@ -6,6 +6,6 @@ export const Product = types.model("Product", {
     type: types.string,
     color: types.string,
     size: types.string,
-    inStock: types.boolean,
+    inStock: types.number,
     dateReceipt: types.string
 });

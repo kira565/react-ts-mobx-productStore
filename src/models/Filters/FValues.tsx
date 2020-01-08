@@ -2,7 +2,7 @@ import {Instance, types} from "mobx-state-tree";
 
 export const FValues = types.union(
     types.string,
-    types.boolean,
+    types.number,
     types.array(types.string)
 );
 

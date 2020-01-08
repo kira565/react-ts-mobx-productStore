@@ -3,7 +3,7 @@ import {SHOW_ALL} from "../../common/constants_common";
 import {TProdFields, TProduct} from "../../types/types";
 import {TFValues} from "./FValues";
 
-export const Bool = types.optional(types.boolean, false);
+export const Bool = types.optional(types.number, 0);
 export const Str = types.optional(types.string, SHOW_ALL);
 export const Arr = types.optional(types.array(types.string), []);
 
