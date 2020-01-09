@@ -9,6 +9,7 @@ export const ProductStore = types.model("ProductStore", {
 })
     .views(self => ({ // ~~redux selectors
         get productsArray(): Array<TProduct> {
+
             return self.products
         }
     }))

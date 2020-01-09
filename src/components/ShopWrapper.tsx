@@ -19,7 +19,7 @@ const ShopWrapper: React.FC = observer(() => {
             <Layout style={{height: '100%'}}>
                 <Layout>
                     <Header className={styles['shop-wrapper__header']}>
-                        <HeaderComponent/>
+                        <HeaderComponent rootStore={rootStore}/>
                     </Header>
                     <Content className={styles['shop-wrapper__content']}>
                         <TableComponent rootStore={rootStore}/>

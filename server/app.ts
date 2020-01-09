@@ -28,11 +28,15 @@ createConnection().then(async (connection: any) => {
 
 
     app.post('/products', async (req: Request, res: Response) => {
-        await req.body.data.forEach(async (product: TProduct) => {
-            const newPostStore = productStoreRep.create(product);
-            await productStoreRep.save(newPostStore).catch((err: any) => console.error("QueryError"))
-        });
-        res.sendStatus(200);
+
+        const start = async () => {
+            await asyncForEach(req.body.data, async (dataItem: TProduct) => {
+                const newPostStore = productStoreRep.create(dataItem);
+                productStoreRep.save(newPostStore).catch((err: any) => console.error("QueryError"))
+            });
+            res.sendStatus(200);
+        };
+        start();
     });
 
 
@@ -45,3 +49,10 @@ createConnection().then(async (connection: any) => {
 
 }).catch((error: ErrorEvent) => console.log(error));
 
+
+
+const asyncForEach = async (array: Array<TProduct>, callback: any) => {
+    for (let index = 0; index < array.length; index++) {
+        await callback(array[index], index, array)
+    }
+};

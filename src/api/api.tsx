@@ -16,7 +16,6 @@ export const productsAPI =  {
     loadProducts(products: TProduct){
         return instance.post(`products`, { "data": products } )
             .then(response => {
-                console.log(response);
                 return response
             })
     }
