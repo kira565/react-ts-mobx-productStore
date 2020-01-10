@@ -21,7 +21,7 @@ const HeaderComponent: React.FC<HProps> = observer(({rootStore}) => {
                 <Col span={8}>
                     <div className={styles['header-title']}><h1>КАЛАШНИКОВ КОНЦЕРН DEV-TASK</h1></div>
                 </Col>
-                <Col span={4}>
+                <Col span={2}>
                     <div className={styles['header-title']}>
                         <div className={styles['preloader-wrapper']}>
                             {
