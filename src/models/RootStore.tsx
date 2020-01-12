@@ -27,13 +27,15 @@ export const RootStore = types.model({
                 let response = yield productsAPI.loadProducts(products);
                 if (response.status = 200) {
                     self.statePost = "done";
+                } else {
+                    self.statePost = "error"
                 }
             }
             catch (error) {
-                self.statePost = "error"
+                self.statePost = "error" // невалид запрос
             }
-
         }),
+
         getProducts: flow(function* getProducts() {
             try {
                 const response = yield productsAPI.getProducts();
@@ -78,8 +80,9 @@ export const rootStore = RootStore.create({
         ],
     }
 });
-connectReduxDevtools(require("remotedev"), rootStore);
 
+
+connectReduxDevtools(require("remotedev"), rootStore);
 
 export type RootInstance = Instance<typeof RootStore>
 const RootStoreContext = createContext<null | RootInstance>(null);
