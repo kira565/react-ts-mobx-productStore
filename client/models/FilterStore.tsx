@@ -16,16 +16,18 @@ export const FilterStore = types.model("FilterStore", {
         get takeFilters() {
             return self.filters
         },
-        getFilterById(filterId: string) {
-            let selectedFilter = self.filters.filter(elem => elem.id === filterId);
+        getFilterById(filterId: string) { // Filter*
+            let selectedFilter = self.filters.filter(elem => {
+                if (elem.id === filterId) return elem
+            });
             if (selectedFilter === undefined){
                 throw new Error('nofilter')
-            } else return selectedFilter
+            } else return selectedFilter[0]
         }
     }))
     .actions(self => ({
         changeFilter(incomingValue: TFValues, filterId: string) {
-            let filt = self.getFilterById(filterId)[0];
+            let filt = self.getFilterById(filterId);
             filt.setValue(incomingValue);
 
             if (incomingValue === undefined || incomingValue === 0) {

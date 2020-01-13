@@ -15,7 +15,6 @@ export const ProductStore = types.model("ProductStore", {
     }))
     .actions(self => ({
         setProductsArray(products: any){
-            console.log(products);
             self.products = products;
         }
     }))

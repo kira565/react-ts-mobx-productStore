@@ -1,28 +1,30 @@
-import {Column, Entity, PrimaryGeneratedColumn} from "typeorm";
+import {Check, Column, Entity, PrimaryGeneratedColumn, Unique} from "typeorm";
+import {Colors, Sizes, Types} from "../../../src/common/enums_common";
 
 
 @Entity()
+@Unique(["id"])
+@Check(`"color" GLOB "#[a-fA-F0-9][a-fA-F0-9][a-fA-F0-9][a-fA-F0-9][a-fA-F0-9][a-fA-F0-9]"`)
 export class ProductEntity {
 
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column()
+    @Column('text')
     name: string;
 
-    @Column()
+    @Column({type: "text", enum: Types})
     type: string;
 
-    @Column()
+    @Column({type: "text", enum: Colors})
     color: string;
 
-    @Column()
+    @Column({type: "text", enum: Sizes})
     size: string;
 
-    @Column()
+    @Column({type: "int", enum: [0, 1]})
     inStock: number;
 
-    @Column()
+    @Column('text')
     dateReceipt: string;
-
 }
