@@ -16,8 +16,8 @@ export const FilterStore = types.model("FilterStore", {
         get takeFilters() {
             return self.filters
         },
-        getFiltersById(filterId: string) {
-            let selectedFilter = self.filters.filter(elem => elem.id === filterId);
+        getFiltersById(filterId: string) { // Filter*
+            let selectedFilter = self.filters.filter(elem => elem.id === filterId); // зарефакторить чтоб возвращал фильтр один фильтр
             if (selectedFilter === undefined){
                 throw new Error('nofilter')
             } else return selectedFilter

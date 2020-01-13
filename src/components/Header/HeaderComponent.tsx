@@ -26,9 +26,9 @@ const HeaderComponent: React.FC<HProps> = observer(({rootStore}) => {
                         <div className={styles['preloader-wrapper']}>
                             {
                                 rootStore &&
-                                rootStore.stateGet === "done"
-                                    ? null
-                                    : <Preloader/>
+                                rootStore.stateGet === "done" ? null : <Preloader/>
+                                || rootStore && rootStore.stateGet === "error" && <div>Fetch error</div>
+
                             }
                         </div>
                     </div>

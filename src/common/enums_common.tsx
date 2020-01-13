@@ -12,11 +12,11 @@ export enum Sizes  {
 }
 
 export enum Colors {
-    GREEN = "green",
-    RED = "red",
-    BLUE = "blue",
-    YELLOW = "yellow",
-    ORANGE = "orange",
-    BLACK = "black",
-    WHITE = "white",
+    GREEN = "#6ff254",
+    RED = "#f25454",
+    BLUE = "#111fdf",
+    YELLOW = "#efec2a",
+    ORANGE = "#ef862a",
+    BLACK = "#000000",
+    WHITE = "#ffffff",
 }

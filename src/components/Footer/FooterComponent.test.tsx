@@ -10,7 +10,6 @@ describe('Shallow Render Footer Component',()=>{
 
     beforeEach(()=>{
         wrapper = shallow(<FooterComponent />);
-        console.log(typeof wrapper)
     });
 
     it('+ render the DUMB component', () => {
