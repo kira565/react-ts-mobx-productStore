@@ -16,7 +16,7 @@ export const FilterStore = types.model("FilterStore", {
         get takeFilters() {
             return self.filters
         },
-        getFiltersById(filterId: string) {
+        getFilterById(filterId: string) {
             let selectedFilter = self.filters.filter(elem => elem.id === filterId);
             if (selectedFilter === undefined){
                 throw new Error('nofilter')
@@ -25,7 +25,7 @@ export const FilterStore = types.model("FilterStore", {
     }))
     .actions(self => ({
         changeFilter(incomingValue: TFValues, filterId: string) {
-            let filt = self.getFiltersById(filterId)[0];
+            let filt = self.getFilterById(filterId)[0];
             filt.setValue(incomingValue);
 
             if (incomingValue === undefined || incomingValue === 0) {

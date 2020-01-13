@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const nodeExternals = require('webpack-node-externals');
 
 module.exports = {
-    entry: './src/index.tsx',
+    entry: './client/index.tsx',
     output: {
         path: path.resolve(__dirname, "build"),
         filename: "bundle.js"

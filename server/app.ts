@@ -4,7 +4,7 @@ import {Request, Response} from "express";
 import express from "express";
 import {ProductEntity} from "./src/entities/ProductEntity";
 import bodyParser from "body-parser";
-import {TProduct} from "../src/types/types";
+import {TProduct} from "../client/types/types";
 let sqlite3 = require('sqlite3').verbose();
 let db = new sqlite3.Database(":memory:");
 

@@ -28,7 +28,7 @@
     "strictPropertyInitialization": false
   },
   "include": [
-    "src/**/*",
+    "client/**/*",
     "server/**/*.ts"
   ],
   "exclude": [
