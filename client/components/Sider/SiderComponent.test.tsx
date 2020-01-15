@@ -9,7 +9,7 @@ import {Select, Checkbox, DatePicker} from "antd";
 import {TRootStore} from "../../types/types";
 import {DATE_RECEIPT, SHOW_COLOR, SHOW_INSTOCK, SHOW_SIZE, SHOW_TYPE} from "../../common/constants_common";
 import {Colors, Sizes, Types} from "../../common/enums_common";
-/*
+
 
 const {RangePicker} = DatePicker;
 
@@ -25,6 +25,8 @@ describe('Should render smart Sider component with incoming props', function () 
             productsStore: {
                 products: fillProducts(1000)
             },
+            stateGet: "pending",
+            statePost: "pending",
             filterStore: {
                 filters: [
                     {
@@ -51,7 +53,6 @@ describe('Should render smart Sider component with incoming props', function () 
                         type: DATE_RECEIPT
                     },
                 ],
-                //selected: null
             }
         });
         renderedComponent = mount(<SiderComponent filterStore={rootStore.filterStore}/>)
@@ -65,5 +66,3 @@ describe('Should render smart Sider component with incoming props', function () 
 
 });
 
-
-*/

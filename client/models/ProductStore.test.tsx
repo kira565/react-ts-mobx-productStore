@@ -6,10 +6,15 @@ import {Colors, Sizes, Types} from "../common/enums_common";
 import {TProduct} from "../types/types";
 import {RootStore} from "./RootStore";
 
-/*
-
 it("ProductEntity store was filled with 1000 random values", done => {
-    const store = RootStore.create({productsStore: {products: fillProducts(1000)}, filterStore: {}});
+    const store = RootStore.create({
+        productsStore: {
+            products: fillProducts(1000)
+        },
+        filterStore: {},
+        stateGet: "pending",
+        statePost: "pending"
+    });
     when(
         (): boolean => store.productsStore.productsArray.length !== 0,
         (): void => {
@@ -25,6 +30,8 @@ it("All filters should be disabled or with 'show_all' value", done => {
         productsStore: {
             products: fillProducts(1000)
         },
+        stateGet: "pending",
+        statePost: "pending",
         filterStore: {
             filters: [
                 {
@@ -51,7 +58,6 @@ it("All filters should be disabled or with 'show_all' value", done => {
                     type: DATE_RECEIPT
                 },
             ],
-           // selected: null
         }
     });
     when(
@@ -72,6 +78,8 @@ describe("All Filters works fine", () => {
         productsStore: {
             products: fillProducts(1000)
         },
+        stateGet: "pending",
+        statePost: "pending",
         filterStore: {
             filters: [
                 {
@@ -133,9 +141,9 @@ describe("All Filters works fine", () => {
         )
     });
     it("ProductStore filters data by inStock", done => {
-        store.filterStore.changeFilter(true, "f4");
+        store.filterStore.changeFilter(1, "f4");
         when(
-            (): boolean => store.filterStore.filters[3].value === true,
+            (): boolean => store.filterStore.filters[3].value === 1,
             (): void => {
                 expect(store.takeFilteredProducts.every((product: TProduct) => product.inStock)).toBe(true);
                 done()
@@ -156,5 +164,3 @@ describe("All Filters works fine", () => {
     });
 });
 
-
-*/

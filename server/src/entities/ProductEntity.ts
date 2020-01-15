@@ -1,5 +1,5 @@
 import {Check, Column, Entity, PrimaryGeneratedColumn, Unique} from "typeorm";
-import {Colors, Sizes, Types} from "../../../src/common/enums_common";
+import {Colors, Sizes, Types} from "../../../client/common/enums_common";
 
 
 @Entity()

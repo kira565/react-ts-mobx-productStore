@@ -8,7 +8,6 @@ import {RootStore} from "../../models/RootStore";
 import {Table} from "react-virtualized";
 import {TRootStore} from "../../types/types";
 
-/*
 
 configure({adapter: new Adapter()});
 
@@ -17,7 +16,14 @@ describe('Should render Table with values after receiving props', function () {
     let renderedComponent: any, rootStore: TRootStore;
 
     beforeEach(() => {
-        rootStore = RootStore.create({productsStore: {products: fillProducts(1000)}, filterStore: {}});
+        rootStore = RootStore.create({
+            productsStore: {
+                products: fillProducts(1000)
+            },
+            stateGet: "pending",
+            statePost: "pending",
+            filterStore: {}
+        });
         renderedComponent = mount(<TableComponent rootStore={rootStore}/>)
     });
 
@@ -31,4 +37,4 @@ describe('Should render Table with values after receiving props', function () {
 });
 
 
-*/
+
