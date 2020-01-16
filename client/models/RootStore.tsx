@@ -39,6 +39,7 @@ export const RootStore = types.model({
         getProducts: flow(function* getProducts() {
             try {
                 const response = yield productsAPI.getProducts();
+                console.log(response);
                 self.stateGet = "done";
                 self.productsStore.setProductsArray(response.data);
             } catch (error) {
