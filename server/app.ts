@@ -20,10 +20,8 @@ createConnection().then(async (connection: any) => {
     });
 
 
-
     app.post('/products', postAllProducts);
     app.get('/products', getAllProducts);
-
 
 
     app.listen(port, () => console.log(`server up on port ${port}`));
